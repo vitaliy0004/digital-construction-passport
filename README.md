@@ -23,21 +23,21 @@ Spring Boot backend для управления проектами с автор
 - **READER**
   / `reader123` (роль в системе `READER` - "читатель")
   - Может:
-просматривать все прокты `GET /projects`
-просматривать конкретный проект `GET /projects/{id}`
+  просматривать все прокты `GET /projects`
+  просматривать конкретный проект `GET /projects/{id}`
   - Не может:
-создавать проект  `POST /projects` (будет 403)
-обновлять проект `PUT /projects/{id}` (будет 403)
-удалять проект `DELETE /projects/{id}` (будет 403)
+  создавать проект  `POST /projects` (будет 403)
+  обновлять проект `PUT /projects/{id}` (будет 403)
+  удалять проект `DELETE /projects/{id}` (будет 403)
 
 - **EDITOR**
 / `editor123` (роль в системе `EDITOR` - "редактор")
   - Может делать:
-просматривать все прокты `GET /projects`
-просматривать конкретный проект `GET /projects/{id}`
-создавать проект  `POST /projects` 
-обновлять проект `PUT /projects/{id}` 
-удалять проект `DELETE /projects/{id}` 
+  просматривать все прокты `GET /projects`
+  просматривать конкретный проект `GET /projects/{id}`
+  создавать проект  `POST /projects` 
+  обновлять проект `PUT /projects/{id}` 
+  удалять проект `DELETE /projects/{id}` 
 
 
 - **Public API**
