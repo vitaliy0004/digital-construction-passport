@@ -1,6 +1,6 @@
-# Digital Construction Passport (backend)
+# Задание для Backend-разработчика: Цифровой строительный паспорт
 
-Spring Boot backend для управления проектами (Projects) с авторизацией через JWT и ролями пользователей.
+Spring Boot backend для управления проектами с авторизацией через JWT и ролями пользователей.
 
 ## Требования
 
@@ -14,27 +14,34 @@ Spring Boot backend для управления проектами (Projects) с
 2. Запусти класс `org.example.Main`.
 3. Приложение стартует на порту `8080`.
 
-## Базовый URL
+## Базовый URL используеться во всех запросах
 
 `http://localhost:8080`
 
-## Пользователи по умолчанию
-
-При первом запуске (если в базе нет пользователей) создаются:
-
-- **editor** / `editor123` (роль `EDITOR`)
-- **reader** / `reader123` (роль `READER`)
-
-## Роли и доступ
+## Пользователи которых можно создать, их Роли и доступ:
 
 - **READER**
-  - Может: `GET /projects`, `GET /projects/{id}`
-  - Не может: `POST/PUT/DELETE /projects/**` (будет 403)
+ **reader** / `reader123` (роль в системе `READER` - "читатель")
+  - Может:
+просматривать все прокты `GET /projects`
+просматривать конкретный проект `GET /projects/{id}`
+  - Не может:
+создавать проект  `POST /projects` (будет 403)
+обновлять проект `PUT /projects/{id}` (будет 403)
+удалять проект `DELETE /projects/{id}` (будет 403)
 
 - **EDITOR**
-  - Может: `GET/POST/PUT/DELETE /projects/**`
+ **editor** / `editor123` (роль в системе `EDITOR` - "редактор")
+  - Может делать:
+просматривать все прокты `GET /projects`
+просматривать конкретный проект `GET /projects/{id}`
+создавать проект  `POST /projects` 
+обновлять проект `PUT /projects/{id}` 
+удалять проект `DELETE /projects/{id}` 
 
-## Авторизация
+
+- **Public API**
+## 1) Авторизация
 
 ### Логин
 
@@ -44,7 +51,7 @@ Headers:
 
 `Content-Type: application/json`
 
-Body:
+Body для reader:
 
 ```json
 {
@@ -52,7 +59,14 @@ Body:
   "password": "reader123"
 }
 ```
+Body для editor:
 
+```json
+{
+  "username": "editor",
+  "password": "editor123"
+}
+```
 Response (пример):
 
 ```json
@@ -68,7 +82,7 @@ Response (пример):
 
 ## Projects API
 
-### Получить все проекты
+### 2) Получить все проекты
 
 `GET /projects`
 
@@ -90,7 +104,7 @@ Response (пример):
 ]
 ```
 
-### Получить проект по id
+### 3)Получить проект по id
 
 `GET /projects/{id}`
 
@@ -109,7 +123,7 @@ Headers:
 }
 ```
 
-### Создать проект (только EDITOR)
+### 4) Создать проект (только EDITOR)
 
 `POST /projects`
 
@@ -128,7 +142,7 @@ Body:
 }
 ```
 
-### Обновить проект (только EDITOR)
+### 5) Обновить проект (только EDITOR)
 
 `PUT /projects/{id}`
 
@@ -149,7 +163,7 @@ Body:
 
 Если проект удалён (`deleted=true`), вернётся `410 Gone` + `{ "error": "Project was deleted" }`.
 
-### Удалить проект (soft delete, только EDITOR)
+### 5) Удалить проект (soft delete, только EDITOR)
 
 `DELETE /projects/{id}`
 
