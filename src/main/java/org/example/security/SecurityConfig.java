@@ -24,6 +24,7 @@ public class SecurityConfig {
                         .requestMatchers(HttpMethod.GET, "/projects/**").hasAnyRole("READER", "EDITOR")
                         .requestMatchers(HttpMethod.POST, "/projects/**").hasRole("EDITOR")
                         .requestMatchers(HttpMethod.PUT, "/projects/**").hasRole("EDITOR")
+                        .requestMatchers(HttpMethod.DELETE, "/projects/**").hasRole("EDITOR")
                         .anyRequest().authenticated()
                 )
                 .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class)

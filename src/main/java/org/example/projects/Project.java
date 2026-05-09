@@ -34,6 +34,9 @@ public class Project {
     @Column(name = "document", nullable = false)
     private List<String> documents = new ArrayList<>();
 
+    @Column(nullable = false)
+    private boolean deleted = false;
+
     protected Project() {
     }
 
@@ -69,5 +72,13 @@ public class Project {
 
     public void setDocuments(List<String> documents) {
         this.documents = documents == null ? new ArrayList<>() : new ArrayList<>(documents);
+    }
+
+    public boolean isDeleted() {
+        return deleted;
+    }
+
+    public void setDeleted(boolean deleted) {
+        this.deleted = deleted;
     }
 }
