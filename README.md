@@ -38,7 +38,7 @@ Spring Boot backend для управления проектами с автор
     -  удалять проект `DELETE /projects/{id}` 
 
 
-- **Public API**
+##**Public API**
 ## 1) Авторизация
 
 ### Логин
