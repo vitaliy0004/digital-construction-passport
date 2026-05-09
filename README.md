@@ -43,7 +43,7 @@ Spring Boot backend для управления проектами с автор
 
 ### Логин
 
-`POST /auth/login`
+`POST {baseUrl}/auth/login`
 
 Headers:
 
@@ -82,7 +82,7 @@ Response (пример):
 
 ### 2) Получить все проекты
 
-`GET /projects`
+`GET {baseUrl}/projects`
 
 Headers:
 
@@ -104,7 +104,7 @@ Response (пример):
 
 ### 3)Получить проект по id
 
-`GET /projects/{id}`
+`GET {baseUrl}/projects/{id}`
 
 Headers:
 
@@ -123,7 +123,7 @@ Headers:
 
 ### 4) Создать проект (только EDITOR)
 
-`POST /projects`
+`POST {baseUrl}/projects`
 
 Headers:
 
@@ -142,7 +142,7 @@ Body:
 
 ### 5) Обновить проект (только EDITOR)
 
-`PUT /projects/{id}`
+`PUT {baseUrl}/projects/{id}`
 
 Headers:
 
@@ -161,9 +161,9 @@ Body:
 
 Если проект удалён (`deleted=true`), вернётся `410 Gone` + `{ "error": "Project was deleted" }`.
 
-### 5) Удалить проект (soft delete, только EDITOR)
+### 6) Удалить проект (soft delete, только EDITOR)
 
-`DELETE /projects/{id}`
+`DELETE {baseUrl}/projects/{id}`
 
 Headers:
 
